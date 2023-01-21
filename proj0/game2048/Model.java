@@ -166,8 +166,7 @@ public class Model extends Observable {
             {
                 if(board.tile(i,j)!=null&&cnt1!=0&&cnt1==board.tile(i,j).value())
                 {
-                    if(this.score<2*board.tile(i,j).value())
-                        this.score=2*board.tile(i,j).value();
+                    score+=2*board.tile(i,j).value();
                     board.move(i,j,board.tile(i,cnt2));
                     changed = true;
                     cnt1=0;
@@ -209,8 +208,7 @@ public class Model extends Observable {
                 {
                     if(board.tile(i,j)!=null&&cnt1!=0&&cnt1==board.tile(i,j).value())
                     {
-                        if(this.score<2*board.tile(i,j).value())
-                            this.score=2*board.tile(i,j).value();
+                        score+=2*board.tile(i,j).value();
                         board.move(i,j,board.tile(cnt2,j));
                         changed = true;
                         cnt1=0;
@@ -252,8 +250,7 @@ public class Model extends Observable {
                 {
                     if(board.tile(i,j)!=null&&cnt1!=0&&cnt1==board.tile(i,j).value())
                     {
-                        if(this.score<2*board.tile(i,j).value())
-                            this.score=2*board.tile(i,j).value();
+                        score+=2*board.tile(i,j).value();
                         board.move(i,j,board.tile(cnt2,j));
                         changed = true;
                         cnt1=0;
