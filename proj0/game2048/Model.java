@@ -159,6 +159,135 @@ public class Model extends Observable {
 
             }
         }
+        else  if(side==Side.SOUTH)
+        for(i=0;i<bnum;i++)
+        {
+            cnt1=0;
+            for(j=0;j<bnum;j++)
+            {
+                if(board.tile(i,j)!=null&&cnt1!=0&&cnt1==board.tile(i,j).value())
+                {
+                    if(this.score<2*board.tile(i,j).value())
+                        this.score=2*board.tile(i,j).value();
+                    board.move(i,j,board.tile(i,cnt2));
+                    changed = true;
+                    cnt1=0;
+                }
+                else if(board.tile(i,j)!=null&&cnt1!=0&&cnt1!=board.tile(i,j).value())
+                {
+                    cnt1=board.tile(i,j).value();
+                    cnt2=j;
+                }
+                else if(board.tile(i,j)!=null&&cnt1==0)
+                {
+                    cnt1=board.tile(i,j).value();
+                    cnt2=j;
+                }
+            }
+            cnt1=-1;
+            for(j=0;j<bnum;j++)
+            {
+
+
+                if(board.tile(i,j)!=null&&cnt1!=-1)
+                {
+                    board.move(i,cnt1,board.tile(i,j));
+                    changed=true;
+                    cnt1++;
+                }
+                if(board.tile(i,j)==null&&cnt1==-1)
+                {
+                    cnt1=j;
+                }
+
+            }
+        }
+        if(side==Side.EAST)
+            for(j=0;j<bnum;j++)
+            {
+                cnt1=0;
+                for(i=bnum-1;i>=0;i--)
+                {
+                    if(board.tile(i,j)!=null&&cnt1!=0&&cnt1==board.tile(i,j).value())
+                    {
+                        if(this.score<2*board.tile(i,j).value())
+                            this.score=2*board.tile(i,j).value();
+                        board.move(i,j,board.tile(cnt2,j));
+                        changed = true;
+                        cnt1=0;
+                    }
+                    else if(board.tile(i,j)!=null&&cnt1!=0&&cnt1!=board.tile(i,j).value())
+                    {
+                        cnt1=board.tile(i,j).value();
+                        cnt2=i;
+                    }
+                    else if(board.tile(i,j)!=null&&cnt1==0)
+                    {
+                        cnt1=board.tile(i,j).value();
+                        cnt2=i;
+                    }
+                }
+                cnt1=-1;
+                for(i=bnum-1;i>=0;i--)
+                {
+
+
+                    if(board.tile(i,j)!=null&&cnt1!=-1)
+                    {
+                        board.move(cnt1,j,board.tile(i,j));
+                        changed=true;
+                        cnt1--;
+                    }
+                    if(board.tile(i,j)==null&&cnt1==-1)
+                    {
+                        cnt1=i;
+                    }
+
+                }
+            }
+        if(side==Side.WEST)
+            for(j=0;j<bnum;j++)
+            {
+                cnt1=0;
+                for(i=0;i<bnum;i++)
+                {
+                    if(board.tile(i,j)!=null&&cnt1!=0&&cnt1==board.tile(i,j).value())
+                    {
+                        if(this.score<2*board.tile(i,j).value())
+                            this.score=2*board.tile(i,j).value();
+                        board.move(i,j,board.tile(cnt2,j));
+                        changed = true;
+                        cnt1=0;
+                    }
+                    else if(board.tile(i,j)!=null&&cnt1!=0&&cnt1!=board.tile(i,j).value())
+                    {
+                        cnt1=board.tile(i,j).value();
+                        cnt2=i;
+                    }
+                    else if(board.tile(i,j)!=null&&cnt1==0)
+                    {
+                        cnt1=board.tile(i,j).value();
+                        cnt2=i;
+                    }
+                }
+                cnt1=-1;
+                for(i=0;i<bnum;i++)
+                {
+
+
+                    if(board.tile(i,j)!=null&&cnt1!=-1)
+                    {
+                        board.move(cnt1,j,board.tile(i,j));
+                        changed=true;
+                        cnt1++;
+                    }
+                    if(board.tile(i,j)==null&&cnt1==-1)
+                    {
+                        cnt1=i;
+                    }
+
+                }
+            }
 
 
        /** int sv=board.tile(2,3).value()+2;
