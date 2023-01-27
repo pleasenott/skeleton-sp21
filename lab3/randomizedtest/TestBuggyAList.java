@@ -9,4 +9,23 @@ import static org.junit.Assert.*;
  */
 public class TestBuggyAList {
   // YOUR TESTS HERE
+  @Test
+  public void testThreeAddThreeRemove() {
+      AListNoResizing<Integer> correct = new AListNoResizing<>();
+      BuggyAList<Integer> broken = new BuggyAList<>();
+      int i;
+      for(i=0;i<1000;i++)
+      {
+          correct.addLast(i);
+          broken.addLast(i);
+      }
+      assertEquals(correct.size(), broken.size());
+      for(i=0;i<1000;i++)
+      {
+          //assertEquals(correct.removeLast(), broken.removeLast());
+          correct.removeLast();
+          broken.removeLast();
+      }
+
+  }
 }
