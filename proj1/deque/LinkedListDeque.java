@@ -1,6 +1,6 @@
 package deque;
 
-public class LinkedListDeque <T>{
+public class LinkedListDeque <T> implements Deque<T>{
     public InsideList<T> head;
     public InsideList<T> end;
     int size;
@@ -75,11 +75,11 @@ public class LinkedListDeque <T>{
     }
     public T get(int n)
     {
-        if(n>size||n<=0)
+        if(n>size||n<0)
             return null;
         int i;
         InsideList<T> tmp=head.next;
-        for(i=0;i<n-1;i++)
+        for(i=0;i<n;i++)
             tmp=tmp.next;
         return tmp.item;
     }
